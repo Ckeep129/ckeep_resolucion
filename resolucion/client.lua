@@ -1,10 +1,12 @@
-        local QBCore = exports['qb-core']:GetCoreObject()
-        local aspect_ratio = GetAspectRatio(0)
-        local resolucion_x, _ = GetActiveScreenResolution()
-        local resolucion_y = resolucion_x / aspect_ratio
-    Citizen.CreateThread(function()   
+    local QBCore = exports['qb-core']:GetCoreObject()
+    local s = 10000
+    Citizen.CreateThread(function() 
+        s = 10000  
         while true do     
-            Citizen.Wait(1000)
+            Citizen.Wait(s)
+            local aspect_ratio = GetAspectRatio(0)
+            local resolucion_x, _ = GetActiveScreenResolution()
+            local resolucion_y = resolucion_x / aspect_ratio
             print("Resolucion: x " .. resolucion_x .. ", y " .. resolucion_y)
             if resolucion_x == 1920 then
                 print('1920')
@@ -15,3 +17,5 @@
             end
         end
 end)
+
+
